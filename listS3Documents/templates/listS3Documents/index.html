@@ -1,0 +1,26 @@
+{% load static %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{% static 'listS3buckets/style.css' %}">
+
+<div class="container">
+    <h1 class="title is-1">Your Buckets</h1>
+    <div class="columns is-desktop">
+        <div class="column"><h3 class="title is-3">Name</h3></div>
+        <div class="column"><h3 class="title is-3">Created</h3></div>
+        <div class="column"><h3 class="title is-3">Location</h3></div>
+    </div>
+    {% if buckets %}
+        {% for doc in buckets %}
+        <div class="columns is-desktop">
+            <div class="column">{{ doc.Name }}</div>
+            <div class="column">{{ doc.CreationDate }}</div>
+            <div class="column">{{ location }}</div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="columns is-desktop">
+            <div class="column">No buckets Available</div>
+        </div>
+    {% endif %}
+    </div>
+</div>

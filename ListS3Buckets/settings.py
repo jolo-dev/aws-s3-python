@@ -55,7 +55,8 @@ ROOT_URLCONF = 'ListS3Buckets.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [    
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates'),
             os.path.join(BASE_DIR, 'listS3Documents/templates')
         ],
         'APP_DIRS': True,
