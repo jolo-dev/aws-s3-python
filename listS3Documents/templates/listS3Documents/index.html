@@ -12,7 +12,7 @@
     {% if buckets %}
         {% for doc in buckets %}
         <div class="columns is-desktop">
-            <div class="column">{{ doc.Name }}</div>
+            <div class="column"><a href="/bucket/{{ doc.Name }}">{{ doc.Name }}</a></div>
             <div class="column">{{ doc.CreationDate }}</div>
             <div class="column">{{ location }}</div>
         </div>
