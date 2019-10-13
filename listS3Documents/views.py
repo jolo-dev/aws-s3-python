@@ -12,10 +12,28 @@ def index(request):
     }
     return render(request, 'listS3Documents/index.html', context)
 
-def bucketContent(request, bucketname):
-    objects = s3.list_objects_v2(Bucket=bucketname,EncodingType='url')
+def bucketContent(request, bucketname, path=None):
+    client = boto3.client('s3')
+    paginator = client.get_paginator('list_objects')
+    subfolders = []
+    
+    if not path:
+        result = paginator.paginate(Bucket=bucketname, Delimiter='/')
+        for prefix in result.search('CommonPrefixes'):
+            subfolders.append(prefix.get('Prefix'))
+
+    objects = []
+    if not subfolders:         
+        resource = boto3.resource('s3')
+        bucket = resource.Bucket(bucketname)
+        for obj_sum in bucket.objects.all():
+            obj = resource.Object(obj_sum.bucket_name, obj_sum.key)
+            # print(obj.last_modified)
+            objects.append(obj)
+    
     content = {
         'bucket': bucketname,
-        'objects': objects['Contents']
+        'subfolders': subfolders,
+        'objects': objects
     }
     return render(request, 'listS3Documents/content.html', content)

@@ -3,18 +3,25 @@
 <link rel="stylesheet" type="text/css" href="{% static 'listS3buckets/style.css' %}">
 
 <div class="container">
-    <h1 class="title is-1">{{ bucketname }}</h1>
+    <h1 class="title is-1">{{ bucket }}</h1>
     <div class="columns is-desktop">
         <div class="column"><h3 class="title is-3">Name</h3></div>
         <div class="column"><h3 class="title is-3">Last Modified</h3></div>
-        <div class="column"><h3 class="title is-3">Size</h3></div>
+        <div class="column"><h3 class="title is-3">Size in KB</h3></div>
     </div>
-    {% if objects %}
-        {% for doc in objects %}
+    {% if objects or subfolders %}
+        {% for obj in objects %}
         <div class="columns is-desktop">
-            <div class="column">{{ doc.Key }}</div>
-            <div class="column">{{ doc.LastModified }}</div>
-            <div class="column">{{ doc.Size }}</div>
+            <div class="column">{{ obj.key }}</div>
+            <div class="column">{{ obj.last_modified }}</div>
+            <div class="column">{{ obj.content_length }}</div>
+        </div>
+        {% endfor %}
+        {% for sub in subfolders %}
+        <div class="columns is-desktop">
+            <div class="column"><a href="/{{ bucket }}/{{ sub }}">{{ sub }}</a></div>
+            <div class="column"></div>
+            <div class="column"></div>
         </div>
         {% endfor %}
     {% else %}
