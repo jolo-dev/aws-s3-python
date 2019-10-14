@@ -1,8 +1,9 @@
 # Introduction
 
-This repo lists all your S3-Buckets and Files within the Bucket. The viewer does not need to have an AWS-account.
+It's an AWS S3-Bucket clone by using Python's [**boto3**](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html?id=docs_gateway).
+This repo lists all your S3-Buckets and Files within the Bucket.
 
-# What's inside?
+# What else is used?
 
 It is written in Python via [Django](https://www.djangoproject.com/) and
 using the [boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)-library in order to connect AWS via Python.
