@@ -22,6 +22,6 @@ See if it works by using `aws s3 ls`. Below is a **sample** output by using the 
 # How to use
 
 ```
-cd ListS3Bucket
+cd aws-s3-python
 python manage.py runserver
 ```
