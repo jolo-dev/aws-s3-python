@@ -20,8 +20,20 @@ See if it works by using `aws s3 ls`. Below is a **sample** output by using the 
 ```
 
 # How to use
+Install requirements Activate pipenv shell
 
 ```
 cd aws-s3-python
+pipenv install
+pipenv shell
 python manage.py runserver
+```
+
+# Testing
+[Django-Pytest](https://pytest-django.readthedocs.io/en/latest/)
+
+*Usage*
+```
+cd aws-s3-python
+pytest
 ```
