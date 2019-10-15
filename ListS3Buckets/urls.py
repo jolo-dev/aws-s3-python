@@ -17,6 +17,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('', include('listS3Documents.urls')),
+    path('', include('listS3Documents.urls', namespace='list_s3_documents')),
     path('admin/', admin.site.urls),
 ]
