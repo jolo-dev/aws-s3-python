@@ -1,3 +1,10 @@
-from django.test import TestCase
+from django.urls import reverse
 
-# Create your tests here.
+
+class TestViews:
+
+	url = reverse("list_s3_documents:index")
+
+	def test_index(self, client):
+		response = client.get(self.url)
+		print(response.content)
